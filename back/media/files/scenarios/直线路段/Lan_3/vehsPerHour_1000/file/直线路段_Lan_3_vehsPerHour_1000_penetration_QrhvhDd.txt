@@ -1,0 +1,81 @@
+version: '3'
+services:
+  django:
+    image: g-obiw5388-docker.pkg.coding.net/bishe/front-back/django_app:master-a7c0e0da72cc0452f96554ab3e862eab394253b8
+    container_name: django
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+      - redis
+    command: >
+      bash -c "
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=111111
+
+ # vue:
+ #   image: g-ntbt5563-docker.pkg.coding.net/bishe/bishe/vue_app:master-caaf7cc92451ff5fd95a53c46cfc1e3bd8d4fb7d
+  #  container_name: vue
+  #  ports:
+  #    - "8080:8080"
+
+  nginx:
+    image: g-obiw5388-docker.pkg.coding.net/bishe/front-back/nginx_app:master-a7c0e0da72cc0452f96554ab3e862eab394253b8
+    container_name: nginx
+    ports:
+      - "8081:80"
+    depends_on:
+      - django
+
+  mysql:
+    image: mysql:8.0.41
+    container_name: mysql
+    command: >
+      mysqld --user=root 
+             --explicit_defaults_for_timestamp 
+             --character-set-server=utf8mb4 
+             --collation-server=utf8mb4_general_ci 
+             --default-authentication-plugin=mysql_native_password 
+             --mysqlx=0
+#      - -character-set-server=utf8mb4  # 设置默认字节
+#      - -collation-server=utf8mb4_general_ci #   设置排序
+#      - -explicit_defaults_for_timestamp=true # 设置可为 null
+    #      --default-authentication-plugin=mysql_native_password # 使用 5.7 版本的密码验证
+    #    "mysqld --user=root --explicit_defaults_for_timestamp --character-set-server=utf8mb4"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_HOST=localhost 
+      - MYSQL_PORT=3306 
+      - MYSQL_DATABASE=django_03_04
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=111111
+      - MYSQL_ROOT_PASSWORD=111111
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    restart: always
+
+  celery:
+    image: celery:latest
+    container_name: celery
+    command: celery -A MyCelery.main worker -l info -P eventlet
+    depends_on:
+      - mysql
+      - redis
+
+volumes:
+  mysql_data:

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <routes>
+            <vType carFollowModel="Krauss" decel="4" id="HDV" maxaccel="2.6" maxspeed="33" tau="1.5" vClass="passenger"/>
+            <vType carFollowModel="CACC" decel="5" id="CAV" maxaccel="2.6" maxspeed="33" tau="0.8" vClass="private"/>
+            <flow id="HDV-flow1" type="HDV" arrivalLane="current" begin="0" color="0,1,0" departLane="random" departSpeed="33" end="3600" from="E0" to="E1" vehsPerHour="341"/>
+            <flow id="CAV-flow1" type="CAV" arrivalLane="current" begin="0" color="1,0,0" departLane="random" departSpeed="33" end="3600" from="E0" to="E1" vehsPerHour="146"/>
+        </routes>
+                

@@ -1,0 +1,106 @@
+#app,
+html {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0px 0px 14px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0px 0px 10px;
+    color: black
+}
+
+.el-submenu__title {
+    background-color: rgb(20, 87, 158) !important;
+}
+
+.el-submenu__title:hover
+
+/* 当鼠标悬停时，设置您想要的背景色 */
+    {
+    background-color: #0c4091 !important;
+    /* 替换为您想要的背景色 */
+}
+
+.login-container {
+    min-height: 100%;
+    width: 100%;
+    background-color: #0d47a1;
+    overflow: hidden;
+}
+
+.login-container .tab-pages {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    padding: 40px 35px 0;
+    margin: 100px auto;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.login-container .title-container {
+    position: relative;
+}
+
+.login-container .title-container .title {
+    font-size: 26px;
+    color: #090541;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.login-container .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgb(247, 247, 247);
+    border-radius: 9px;
+    color: rgb(69, 69, 69);
+}
+
+.login-container .svg-container {
+    padding: 6px 5px 6px 15px;
+    color: rgba(0, 51, 255, 0.447);
+    vertical-align: middle;
+    width: 30px;
+    display: inline-block;
+
+}
+
+.login-container .el-input {
+    display: inline-block;
+    height: 47px;
+    width: 85%;
+}
+
+.login-container .login-form {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    padding: 40px 35px 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.el-tabs__item {
+    font-size: 16px;
+}

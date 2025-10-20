@@ -1,0 +1,42 @@
+version: '3'
+# === 网络定义（顶层独立块）===
+networks:
+  myapp-network:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:8.0.41
+    container_name: mysql
+    networks:
+      - myapp-network  # 加入专用网络
+    command: >
+      mysqld --user=root 
+             --explicit_defaults_for_timestamp 
+             --character-set-server=utf8mb4 
+             --collation-server=utf8mb4_general_ci 
+             --default-authentication-plugin=mysql_native_password 
+             --mysqlx=0
+    ports:
+      - "3306:3306"
+    volumes:
+      - media-data:/var/lib/mysql
+    environment:
+      - MYSQL_HOST=localhost 
+      - MYSQL_PORT=3306 
+      - MYSQL_DATABASE=django_03_04
+      - MYSQL_ROOT_PASSWORD=111111
+
+  redis:
+    image: redis
+    container_name: redis
+    networks:
+      - myapp-network  # 加入专用网络
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    restart: always
+
+volumes:
+  media-data: 

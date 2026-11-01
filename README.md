@@ -48,6 +48,19 @@
 > 持续化集成化后的使用步骤：
 1. 编写到代码代码后，本地测试通过了，上传到 git。
 2. 自动化处理 过几分钟就可以访问了
+> 持续化集成演示：
+
+https://github.com/user-attachments/assets/43e51650-2452-4006-b489-7844209574d0
+
+
+> 部署到服务器演示：
+
+
+
+https://github.com/user-attachments/assets/50c5a755-2af6-47e3-b4c8-48fa2b21ed1e
+
+
+
 
 ---
 
